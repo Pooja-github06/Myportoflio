@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import myImage from '../src/Images/IMG_20220212_162739_625.jpg';
 import emailjs from '@emailjs/browser';
 import { useRef } from 'react';
-
+import SplashScreen from './SplashScreen.js'
 const Portfolio = () => {
   const form = useRef();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -81,7 +81,7 @@ const Portfolio = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div><SplashScreen /></div>;
   }
 
   if (!aboutData) {
@@ -279,34 +279,28 @@ const Portfolio = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="h-screen flex items-center justify-center bg-gradient-to-r from-[#EC4186] via-[#38124A] to-[#38124A]">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-white text-4xl md:text-4xl font-extrabold font-sans tracking-wide">Skills</h2>
+      <section
+        id="skills"
+        className="py-16 bg-gradient-to-r from-[#EC4186] via-[#38124A] to-[#38124A]"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-white text-3xl sm:text-4xl font-extrabold font-sans tracking-wide">
+            Skills
+          </h2>
 
-          {/* <h2 className="text-3xl md:text-4xl font-bold text-white">Skills</h2> */}
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-8">
-            {skillsData.map((skill) => (
-              // <div key={skill} className="bg-white p-6 rounded-lg shadow-lg">
-              //   <h3 className="text-xl font-semibold">{skill}</h3>
-              // </div>
-              // <div
-              //   key={skill}
-              //   className="group bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-white/20 text-white transition-transform transform hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] duration-300"
-              // >
-              //   <h3 className="text-xl font-semibold transition duration-300 group-hover:text-white group-hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.8)]">{skill}</h3>
-
-              // </div>
+          <div className="mt-8 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-8">
+            {skillsData.map((skill, idx) => (
               <div
-                key={skill}
-                className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-white/20 text-white transition-transform transform hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] duration-300"
+                key={idx}
+                className="bg-white/10 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-lg border border-white/20 text-white transition-transform transform hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] duration-300"
               >
-                <h3 className="text-xl font-semibold">{skill}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold">{skill}</h3>
               </div>
-
             ))}
           </div>
         </div>
       </section>
+
 
       {/* Projects Section */}
       <ProjectModal
@@ -316,33 +310,31 @@ const Portfolio = () => {
 
 
       {/*powerallydigital link- https://uatpowerally.shriramfinance.me:8082/UATDigital_pbi/downloadApkFile?filename=Powerally%20Digital.apk */}
-      <section id="projects" className="py-24 min-h-screen flex items-center justify-center bg-gradient-to-r from-[#EC4186] via-[#38124A] to-[#38124A]">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-white text-4xl md:text-4xl font-extrabold font-sans tracking-wide">Projects</h2>
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* {["Project 1", "Project 2", "Project 3"].map((project, idx) => (
-              <div key={idx} className="bg-gray-100 p-6 rounded-lg shadow-lg">
-                <h3 className="text-2xl font-semibold">{project}</h3>
-                <p className="mt-2 text-gray-700">
-                  A brief description of the project with tech used and the outcome.
-                </p>
-                <a href="#" className="text-blue-600 mt-4 inline-block">View Project</a>
-              </div>
-            ))} */}
+      <section
+        id="projects"
+        className="py-16 bg-gradient-to-r from-[#EC4186] via-[#38124A] to-[#38124A]"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-white text-3xl sm:text-4xl font-extrabold font-sans tracking-wide text-center">
+            Projects
+          </h2>
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {projectsData.map((project, idx) => (
               <div
                 key={idx}
-                className="bg-gray-100 p-6 rounded-lg shadow-lg cursor-pointer hover:shadow-xl transition"
+                className="bg-gray-100 p-4 sm:p-6 rounded-lg shadow-lg cursor-pointer hover:shadow-xl transition"
                 onClick={() => setSelectedProject(project)}
               >
-                <h3 className="text-2xl font-semibold">{project.title}</h3>
-                <p className="mt-2 text-gray-700">{project.shortDesc}</p>
+                <h3 className="text-xl sm:text-2xl font-semibold">{project.title}</h3>
+                <p className="mt-2 text-gray-700 text-sm sm:text-base">{project.shortDesc}</p>
                 <span className="text-blue-600 mt-4 inline-block">View Project</span>
               </div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* Resume Section */}
       <section id="resume" className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#EC4186] via-[#38124A] to-[#FFFFFF] px-4">
