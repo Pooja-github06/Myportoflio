@@ -205,14 +205,70 @@ const Portfolio = () => {
         </div>
 
         {/* Mobile Menu */}
-        {isOpen && (
+        {/* {isOpen && (
           <div className="md:hidden bg-blue-500 px-6 py-4">
             <a href="#about" className="block py-2 hover:bg-blue-400 rounded" >About</a>
             <a href="#resume" className="block py-2 hover:bg-blue-400 rounded">Resume</a>
             <a href="#projects" className="block py-2 hover:bg-blue-400 rounded">Projects</a>
             <a href="#contact" className="block py-2 hover:bg-blue-400 rounded">Contact</a>
+            <a href="https://www.linkedin.com/in/pooja-shingate-137025212/" target="_blank"
+              rel="noopener noreferrer" className="hover:bg-navbar-font px-3 py-2 rounded">LinkedIn</a>
+            <a href="https://github.com/Pooja-github06" target="_blank"
+              rel="noopener noreferrer" className="hover:bg-navbar-font px-3 py-2 rounded">Github</a>
+          </div>
+        )} */}
+        {isOpen && (
+          <div className="md:hidden bg-gradient-to-b from-blue-600 to-blue-400 px-6 py-4 transition-all duration-300 ease-in-out">
+            <a
+              href="#about"
+              onClick={() => setIsOpen(false)}
+              className="block py-2 hover:bg-blue-300 rounded text-white"
+            >
+              About
+            </a>
+            <a
+              href="#resume"
+              onClick={() => setIsOpen(false)}
+              className="block py-2 hover:bg-blue-300 rounded text-white"
+            >
+              Resume
+            </a>
+            <a
+              href="#projects"
+              onClick={() => setIsOpen(false)}
+              className="block py-2 hover:bg-blue-300 rounded text-white"
+            >
+              Projects
+            </a>
+            <a
+              href="#contact"
+              onClick={() => setIsOpen(false)}
+              className="block py-2 hover:bg-blue-300 rounded text-white"
+            >
+              Contact
+            </a>
+            <a
+              href="https://www.linkedin.com/in/pooja-shingate-137025212/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsOpen(false)}
+              className="block py-2 hover:bg-blue-300 rounded text-white"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/Pooja-github06"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsOpen(false)}
+              className="block py-2 hover:bg-blue-300 rounded text-white"
+            >
+              Github
+            </a>
           </div>
         )}
+
+
       </nav>
       {/* Hero Section */}
       {/* <section id="home" className="h-screen bg-cover bg-center" style={{ backgroundImage: 'url(https://source.unsplash.com/1600x900/?technology)' }}>
