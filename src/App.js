@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCodi } from "@fortawesome/free-brands-svg-icons"; // for LinkedIn
+import Papa from "papaparse";
 
 import { faCode } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect } from 'react';
@@ -44,32 +45,72 @@ const Portfolio = () => {
 
 
 
+  // useEffect(() => {
+  //   const aboutURL =
+  //     "https://api.sheetbest.com/sheets/43535dab-1b87-4f87-97b4-5b4b383d3194/tabs/Sheet1";
+  //   const skillsURL =
+  //     "https://api.sheetbest.com/sheets/43535dab-1b87-4f87-97b4-5b4b383d3194/tabs/Sheet2";
+  //   const projectsURL =
+  //     "https://api.sheetbest.com/sheets/43535dab-1b87-4f87-97b4-5b4b383d3194/tabs/Sheet3";
+
+  //   async function fetchData() {
+  //     try {
+  //       const [aboutRes, skillsRes, projectsRes] = await Promise.all([
+  //         fetch(aboutURL).then((res) => res.json()),
+  //         fetch(skillsURL).then((res) => res.json()),
+  //         fetch(projectsURL).then((res) => res.json()),
+  //       ]);
+
+  //       setAboutData(aboutRes[0]); // first row for About
+  //       const result = skillsRes.map((item) => {
+  //         return item.skills
+
+  //       })
+  //       setSkillsData(result);
+
+  //       // console.log(result)
+  //       // console.log(skillsRes, 'dskills')
+  //       setProjectsData(projectsRes);
+  //     } catch (err) {
+  //       console.error("Error fetching data:", err);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+
+  //   fetchData();
+  // }, []);/
   useEffect(() => {
+    // Each tab (sheet) has its own gid
     const aboutURL =
-      "https://api.sheetbest.com/sheets/43535dab-1b87-4f87-97b4-5b4b383d3194/tabs/Sheet1";
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcer3SOgmllK3tptS2WNasXrhusht7GnLj4Fj7aGzGWowkPPANz5QRFqeBLeJk4N_cbYFOASxgmh8i/pub?output=csv&gid=0"; // Sheet1
     const skillsURL =
-      "https://api.sheetbest.com/sheets/43535dab-1b87-4f87-97b4-5b4b383d3194/tabs/Sheet2";
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcer3SOgmllK3tptS2WNasXrhusht7GnLj4Fj7aGzGWowkPPANz5QRFqeBLeJk4N_cbYFOASxgmh8i/pub?output=csv&gid=932420665s"; // replace with Sheet2 gid
     const projectsURL =
-      "https://api.sheetbest.com/sheets/43535dab-1b87-4f87-97b4-5b4b383d3194/tabs/Sheet3";
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcer3SOgmllK3tptS2WNasXrhusht7GnLj4Fj7aGzGWowkPPANz5QRFqeBLeJk4N_cbYFOASxgmh8i/pub?output=csv&gid=1339665445"; // replace with Sheet3 gid
 
     async function fetchData() {
       try {
         const [aboutRes, skillsRes, projectsRes] = await Promise.all([
-          fetch(aboutURL).then((res) => res.json()),
-          fetch(skillsURL).then((res) => res.json()),
-          fetch(projectsURL).then((res) => res.json()),
+          fetch(aboutURL).then((res) => res.text()),
+          fetch(skillsURL).then((res) => res.text()),
+          fetch(projectsURL).then((res) => res.text()),
         ]);
 
-        setAboutData(aboutRes[0]); // first row for About
-        const result = skillsRes.map((item) => {
-          return item.skills
+        // Parse CSV to JSON
+        const aboutParsed = Papa.parse(aboutRes, { header: true }).data;
+        const skillsParsed = Papa.parse(skillsRes, { header: true }).data;
+        const projectsParsed = Papa.parse(projectsRes, { header: true }).data;
 
-        })
-        setSkillsData(result);
+        // Example: About (first row only)
+        setAboutData(aboutParsed[0]);
 
-        // console.log(result)
-        // console.log(skillsRes, 'dskills')
-        setProjectsData(projectsRes);
+        // Example: Skills (map a specific column)
+        const skills = skillsParsed.map((item) => item.skills);
+        setSkillsData(skills);
+
+        // Example: Projects (all rows)
+        setProjectsData(projectsParsed);
       } catch (err) {
         console.error("Error fetching data:", err);
       } finally {
