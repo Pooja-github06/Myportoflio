@@ -85,7 +85,7 @@ const Portfolio = () => {
     const aboutURL =
       "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcer3SOgmllK3tptS2WNasXrhusht7GnLj4Fj7aGzGWowkPPANz5QRFqeBLeJk4N_cbYFOASxgmh8i/pub?output=csv&gid=0"; // Sheet1
     const skillsURL =
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcer3SOgmllK3tptS2WNasXrhusht7GnLj4Fj7aGzGWowkPPANz5QRFqeBLeJk4N_cbYFOASxgmh8i/pub?output=csv&gid=932420665s"; // replace with Sheet2 gid
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcer3SOgmllK3tptS2WNasXrhusht7GnLj4Fj7aGzGWowkPPANz5QRFqeBLeJk4N_cbYFOASxgmh8i/pub?output=csv&gid=932420665"; // replace with Sheet2 gid
     const projectsURL =
       "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcer3SOgmllK3tptS2WNasXrhusht7GnLj4Fj7aGzGWowkPPANz5QRFqeBLeJk4N_cbYFOASxgmh8i/pub?output=csv&gid=1339665445"; // replace with Sheet3 gid
 
